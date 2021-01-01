@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "app"
+version = "0.1.0"
+description = ""
+authors = ["Samuel Adekoya <damilolasamadekoya@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+uvicorn = "^0.11.3"
+fastapi = "^0.54.1"
+psycopg2-binary = "^2.8.5"
+sqlalchemy = "^1.3.16"
+pydantic = "^1.4"
+alembic = "^1.4.2"
