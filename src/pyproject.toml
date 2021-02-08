@@ -5,7 +5,7 @@ description = ""
 authors = ["samuel adekoya"]
 
 [tool.poetry.dependencies]
-python = "^3.5"
+python = "^3.6"
 uvicorn = "^0.13.3"
 fastapi = "^0.63.0"
 psycopg2-binary = "^2.8.6"
