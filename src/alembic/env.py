@@ -17,12 +17,15 @@ fileConfig(config.config_file_name)
 # for 'autogenerate' support
 base_dir = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 sys.path.append(base_dir)
-from app.models import * # This helps alembic autogeneration
+from app.models import *  # This helps alembic autogeneration
 from app.database import Base
+
 target_metadata = Base.metadata
+
 
 def get_url():
     return os.getenv("DATABASE_URL", "sqlite:///./app.db")
+
 
 def run_migrations_offline():
     """Run migrations in 'offline' mode.
@@ -53,9 +56,7 @@ def run_migrations_online():
     connectable = create_engine(get_url())
 
     with connectable.connect() as connection:
-        context.configure(
-            connection=connection, target_metadata=target_metadata
-        )
+        context.configure(connection=connection, target_metadata=target_metadata)
 
         with context.begin_transaction():
             context.run_migrations()
