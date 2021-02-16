@@ -3,17 +3,11 @@ from fastapi.routing import APIRouter
 from sqlalchemy.orm import Session
 from typing import List
 
-from app.database import SessionLocal
 
 from . import schemas, crud
+from .deps import get_db
 
 
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
 
 
 router = APIRouter()
