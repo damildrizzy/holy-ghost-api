@@ -22,7 +22,7 @@ def login_access_token(
 
     return {
         "access_token": create_access_token(
-            user.id, expires_delta=access_token_expires
+            data={"sub": user.email}, expires_delta=access_token_expires
         ),
         "token_type": "bearer",
     }

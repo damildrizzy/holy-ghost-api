@@ -29,7 +29,7 @@ def create_user(db: Session, user: schemas.UserCreate) -> User:
 
 
 def authenticate(db: Session, email: str, password: str) -> Optional[User]:
-    user = get_user_by_email(email=email)
+    user = get_user_by_email(db, email=email)
     if not user:
         return None
     if not verify_password(password, user.hashed_password):
