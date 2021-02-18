@@ -11,7 +11,7 @@ from .schemas import TokenPayload
 from .crud import get_user
 
 
-oauth2_schema = OAuth2PasswordBearer(tokenUrl="login/access-token")
+oauth2_schema = OAuth2PasswordBearer(tokenUrl="auth/access-token")
 
 
 def get_db():
