@@ -24,3 +24,8 @@ class Token(BaseModel):
 
 class TokenPayload(BaseModel):
     sub: Optional[str] = None
+
+
+class Tongue(BaseModel):
+    raw_string: str
+    tongues_string: str
