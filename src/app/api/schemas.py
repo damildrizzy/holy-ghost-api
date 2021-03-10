@@ -28,4 +28,6 @@ class TokenPayload(BaseModel):
 
 class Tongue(BaseModel):
     raw_string: str
-    tongues_string: str
+
+    class Config:
+        orm_mode = True
