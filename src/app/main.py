@@ -3,10 +3,12 @@ from app.api import users, auth, tongues
 from . import models
 from .database import engine
 
+import emoji
+
 models.Base.metadata.create_all(bind=engine)
 
 
-app = FastAPI()
+app = FastAPI(title=emoji.emojize("Holy Ghost API :fire: :fire: :fire:"))
 
 
 app.include_router(users.router, prefix="/users", tags=["users"])
