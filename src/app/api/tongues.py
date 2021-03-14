@@ -14,7 +14,7 @@ gib = Gibberish()
 
 
 @router.post("/", response_model=schemas.Tongue)
-def get_tongues(tongue: schemas.Tongue, db: Session = Depends(get_db)):
+def get_tongues(tongue: schemas.TongueCreate, db: Session = Depends(get_db)) -> Tongue:
     db_tongue = db.query(Tongue).filter(Tongue.raw_string == tongue.raw_string).first()
     if db_tongue:
         return db_tongue

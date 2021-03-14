@@ -26,8 +26,16 @@ class TokenPayload(BaseModel):
     sub: Optional[str] = None
 
 
-class Tongue(BaseModel):
+class TongueBase(BaseModel):
     raw_string: str
+
+
+class TongueCreate(TongueBase):
+    pass
+
+
+class Tongue(TongueBase):
+    tongues_string: str
 
     class Config:
         orm_mode = True
