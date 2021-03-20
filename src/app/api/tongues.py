@@ -4,17 +4,21 @@ from sqlalchemy.orm import Session
 
 from gibberish import Gibberish
 
-from app.models import Tongue
+from app.models import Tongue, User
 
 from . import schemas
-from .deps import get_db
+from .deps import get_db, get_current_user
 
 router = APIRouter()
 gib = Gibberish()
 
 
 @router.post("/", response_model=schemas.Tongue)
-def get_tongues(tongue: schemas.TongueCreate, db: Session = Depends(get_db)) -> Tongue:
+def get_tongues(
+    tongue: schemas.TongueCreate,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+) -> Tongue:
     db_tongue = db.query(Tongue).filter(Tongue.raw_string == tongue.raw_string).first()
     if db_tongue:
         return db_tongue
