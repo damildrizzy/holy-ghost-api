@@ -1,20 +1,24 @@
 from fastapi import Depends
-from fastapi.routing import APIRouter
+from fastapi.routing import APIRouter, Request
 from sqlalchemy.orm import Session
+from slowapi import Limiter
+from slowapi.util import get_remote_address
 
 from gibberish import Gibberish
 
 from app.models import Tongue, User
-
 from . import schemas
 from .deps import get_db, get_current_user
 
 router = APIRouter()
 gib = Gibberish()
+limiter = Limiter(key_func=get_remote_address)
 
 
 @router.post("/", response_model=schemas.Tongue)
+@limiter.limit("5/minute")
 def get_tongues(
+    request: Request,
     tongue: schemas.TongueCreate,
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
