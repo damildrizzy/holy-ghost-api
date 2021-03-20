@@ -11,7 +11,7 @@ from app.security import ACCESS_TOKEN_EXPIRE_MINUTES, create_access_token
 router = APIRouter()
 
 
-@router.post("auth/access-token", response_model=schemas.Token)
+@router.post("/access-token", response_model=schemas.Token)
 def login_access_token(
     db: Session = Depends(deps.get_db), form_data: OAuth2PasswordRequestForm = Depends()
 ) -> Any:
