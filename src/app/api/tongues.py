@@ -16,7 +16,7 @@ limiter = Limiter(key_func=get_remote_address)
 
 
 @router.post("/", response_model=schemas.Tongue)
-@limiter.limit("5/minute")
+@limiter.limit("10/minute")
 def get_tongues(
     request: Request,
     tongue: schemas.TongueCreate,
